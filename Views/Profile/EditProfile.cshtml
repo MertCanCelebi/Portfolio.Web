@@ -1,0 +1,26 @@
+﻿@model User
+@{
+    ViewData["Title"] = "EditProfile";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+<form method="post">
+    <input type="hidden" asp-for="UserId" />
+    <div class="form-group">
+        <label>Ad</label>
+        <input type="text" class="form-control" asp-for="FirstName" />
+        <span class="text-danger" asp-validation-for="FirstName"></span>
+    </div>
+    <div class="form-group">
+        <label>Soyad</label>
+        <input type="text" class="form-control" asp-for="LastName" />
+        <span class="text-danger" asp-validation-for="LastName"></span>
+    </div>
+    <div class="form-group">
+        <label>Kullanıcı Adı</label>
+        <input type="text" class="form-control" asp-for="UserName" />
+        <span class="text-danger" asp-validation-for="UserName"></span>
+    </div>
+    <input type="hidden" asp-for="Password" />
+    <button class="btn btn-outline-primary" type="submit">Kaydet</button>
+</form>

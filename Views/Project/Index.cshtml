@@ -27,10 +27,31 @@
             <td><a href="@item.GithubUrl">Github Linki</a></td>
             <td>@item.Category.CategoryName</td>
             <td>
-                <a href="/Project/DeleteCategory/@item.ProjectId" class="btn btn-outline-danger">Sil</a>
-                <a href="/Project/UpdateCategory/@item.ProjectId" class="btn btn-outline-info">Güncelle</a>
+                <button onclick="deleteProject(@item.ProjectId)" class="btn btn-outline-danger">Sil</button>
+                <a href="/Project/UpdateProject/@item.ProjectId" class="btn btn-outline-info">Güncelle</a>
             </td>
         </tr>
     }
 </table>
 <a href="/Project/CreateProject/" class="btn btn-outline-primary">Yeni Proje Oluştur</a>
+
+
+<script>
+                function deleteProject(id){
+
+                        Swal.fire({
+      title: "Silmek İstediğinize Emin Misiniz?",
+      text: "Bu İşlemi Geri Alamazsınız!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Evet Sil!",
+      cancelButtonText: "İptal!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+       window.location.href = "/Project/DeleteProject/" + id;
+      }
+    });
+                }
+</script>

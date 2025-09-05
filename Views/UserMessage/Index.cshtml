@@ -1,0 +1,102 @@
+﻿@model List<UserMassage>
+@{
+    ViewData["Title"] = "Mesajlar";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+    int count = 0;
+}
+
+<div class="mb-3">
+    <a href="@Url.Action("Index", new { filter = "all" })" class="btn btn-primary @(ViewBag.Filter == "all" ? "active" : "")">
+        Tümü (@ViewBag.AllCount)
+    </a>
+    <a href="@Url.Action("Index", new { filter = "read" })" class="btn btn-success @(ViewBag.Filter == "read" ? "active" : "")">
+        Okunanlar (@ViewBag.ReadCount)
+    </a>
+    <a href="@Url.Action("Index", new { filter = "unread" })" class="btn btn-danger @(ViewBag.Filter == "unread" ? "active" : "")">
+        Okunmayanlar (@ViewBag.UnreadCount)
+    </a>
+</div>
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>#</th>
+        <td>İsim</td>
+        <td>Mail Adresi</td>
+        <td>Konu</td>
+        <td>Okundu Mu?</td>
+        <td>İşlemler</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <th>@count</th>
+            <td>@item.Name</td>
+            <td>@item.Email</td>
+            <td>@item.Subject</td>
+
+            <td>
+                @if (item.IsRead)
+                {
+                    <span class="badge bg-success">Okundu</span>
+                }
+                else
+                {
+                    <span class="badge bg-danger">Okunmadı</span>
+                }
+            </td>
+
+            <td>
+                @if (item.IsRead)
+                {
+                    <a href="/UserMessage/ChangeStatus/@item.UserMassageId" class="btn btn-outline-warning">Okunmadı Olarak İşaretle</a>
+                }
+                else
+                {
+                    <a href="/UserMessage/ChangeStatus/@item.UserMassageId" class="btn btn-outline-info">Okundu Olarak İşaretle</a>
+                }
+
+                <button onclick="deleteUserMessage(@item.UserMassageId)" class="btn btn-outline-danger">Sil</button>
+                <a href="javascript:void(0)" onclick="showMessage(@item.UserMassageId)" class="btn btn-outline-primary">Mesajı Göster</a>
+            </td>
+        </tr>
+    }
+</table>
+
+
+
+<script>
+                function deleteUserMessage(id){
+
+                        Swal.fire({
+      title: "Silmek İstediğinize Emin Misiniz?",
+      text: "Bu İşlemi Geri Alamazsınız!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Evet Sil!",
+      cancelButtonText: "İptal!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+       window.location.href = "/UserMessage/DeleteUserMessage/" + id;
+      }
+    });
+                }
+</script>
+
+<script>
+    function showMessage(id) {
+        $.get("/UserMessage/ShowMessage/" + id, function (data) {
+            Swal.fire({
+                title: "Mesaj Detayı",
+                html: data,
+                icon: "info",
+                confirmButtonText: "Kapat"
+            }).then(() => {
+                // popup kapanınca listeyi güncelle
+                location.reload();
+            });
+        });
+    }
+</script>

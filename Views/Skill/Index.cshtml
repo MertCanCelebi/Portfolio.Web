@@ -1,0 +1,53 @@
+﻿@model List<Skill>
+@{
+    ViewData["Title"] = "Yeteneklerim Sayfası";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+    int count = 0;
+}
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>#</th>
+        <th>Yetenek Adı</th>
+        <th>Yetenek Yüzdesi</th>
+        <th>İşlemler</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <th>@count</th>
+            <td>@item.Title</td>
+            @{
+                string barClass = "bg-success"; // varsayılan yeşil
+
+                if (item.Percentage < 75)
+                {
+                    barClass = "bg-danger"; // kırmızı
+                }
+                else if (item.Percentage < 90)
+                {
+                    barClass = "bg-warning"; // sarı
+                }
+            }
+            <td style="width:40%;">
+                <div class="progress">
+                    <div class="progress-bar @barClass"
+                         role="progressbar"
+                         style="width:@item.Percentage%; height:20px"
+                         aria-valuenow="@item.Percentage"
+                         aria-valuemin="0"
+                         aria-valuemax="100">
+                        @item.Percentage%
+                    </div>
+                </div>
+            </td>
+      
+            <td>
+                <a href="/Skill/DeleteSkill/@item.SkillId" class="btn btn-outline-danger">Sil</a>
+                <a href="/Skill/UpdateSkill/@item.SkillId" class="btn btn-outline-info">Güncelle</a>
+            </td>
+        </tr>
+    }
+</table>
+<a href="/Skill/CreateSkill/" class="btn btn-outline-primary">Yeni Yetenek Ekle</a>

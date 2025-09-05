@@ -1,0 +1,25 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Profilim";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>#</th>
+        <td>Kullanıcı Adı</td>
+        <td>Ad</td>
+        <td>Soyad</td>
+        <td>İşlemler</td>
+    </tr>
+    <tr>
+        <th>1</th>
+        <td>@Model.UserName</td>
+        <td>@Model.FirstName</td>
+        <td>@Model.LastName</td>
+        <td>
+            <a href="/Profile/EditProfile/@Model.UserId" class="btn btn-outline-info">Profili Düzenle</a>
+            <a href="/Profile/ChangePassword/@Model.UserId" class="btn btn-outline-warning">Şifre Değiştir</a>
+        </td>
+    </tr>
+</table>

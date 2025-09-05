@@ -1,0 +1,25 @@
+﻿
+@*
+    Default Resume
+*@
+<section id="resume" class="resume section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Özgeçmişim</h2>
+        <p>Eğitim ve çalışma hayatıma aşağıdan bakabilirsiniz.</p>
+    </div><!-- End Section Title -->
+
+    <div class="container">
+
+        <div class="row">
+
+            @await Component.InvokeAsync("_DefaultEducationComponent")
+
+            @await Component.InvokeAsync("_DefaultExperienceComponent")
+
+        </div>
+
+    </div>
+
+</section>

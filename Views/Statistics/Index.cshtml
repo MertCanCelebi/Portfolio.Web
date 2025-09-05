@@ -1,0 +1,190 @@
+﻿@{
+    ViewData["Title"] = "İstatistikler";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+<div class="row g-3">
+    <!-- Proje Sayısı -->
+    <div class="col-md-6 col-xl-3">
+        <div class="card shadow-lg rounded-3 border-0">
+            <div class="card-body d-flex justify-content-between align-items-center">
+                <div>
+                    <h6 class="mb-2 text-muted">Proje Sayısı</h6>
+                    <h3 class="fw-bold mb-0">@ViewBag.projectCount</h3>
+                </div>
+                <div class="text-primary fs-2">
+                    <i class="fa fa-folder-open"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Yetenek Ortalaması -->
+    <div class="col-md-6 col-xl-3">
+        <div class="card shadow-lg rounded-3 border-0">
+            <div class="card-body d-flex justify-content-between align-items-center">
+                <div>
+                    <h6 class="mb-2 text-muted">Yetenek Ortalaması</h6>
+                    <h3 class="fw-bold mb-0">@ViewBag.skillAvarege</h3>
+                </div>
+                <div class="text-success fs-2">
+                    <i class="fa fa-chart-line"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Okunmamış Mesaj -->
+    <div class="col-md-6 col-xl-3">
+        <div class="card shadow-lg rounded-3 border-0">
+            <div class="card-body d-flex justify-content-between align-items-center">
+                <div>
+                    <h6 class="mb-2 text-muted">Okunmamış Mesaj</h6>
+                    <h3 class="fw-bold mb-0">@ViewBag.unreadMessageCount</h3>
+                </div>
+                <div class="text-danger fs-2">
+                    <i class="fa fa-envelope"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Son Mesaj Sahibi -->
+    <div class="col-md-6 col-xl-3">
+        <div class="card shadow-lg rounded-3 border-0">
+            <div class="card-body d-flex justify-content-between align-items-center">
+                <div>
+                    <h6 class="mb-2 text-muted">Son Mesaj Sahibi</h6>
+                    <h3 class="fw-bold mb-0">@ViewBag.lastMessageOwner</h3>
+                </div>
+                <div class="text-warning fs-2">
+                    <i class="fa fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-3 mt-1">
+    <!-- Deneyim Yılı -->
+    <div class="col-md-6 col-xl-3">
+        <div class="card shadow-lg rounded-3 border-0">
+            <div class="card-body d-flex justify-content-between align-items-center">
+                <div>
+                    <h6 class="mb-2 text-muted">Deneyim Yılı</h6>
+                    <h3 class="fw-bold mb-0">@ViewBag.experienceYear</h3>
+                </div>
+                <div class="text-dark fs-2">
+                    <i class="fa fa-suitcase"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Şirket Sayısı -->
+    <div class="col-md-6 col-xl-3">
+        <div class="card shadow-lg rounded-3 border-0">
+            <div class="card-body d-flex justify-content-between align-items-center">
+                <div>
+                    <h6 class="mb-2 text-muted">Çalıştığım Şirket</h6>
+                    <h3 class="fw-bold mb-0">@ViewBag.companyCount</h3>
+                </div>
+                <div class="text-info fs-2">
+                    <i class="fa fa-building"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Değerlendirme Ortalama -->
+    <div class="col-md-6 col-xl-3">
+        <div class="card shadow-lg rounded-3 border-0">
+            <div class="card-body d-flex justify-content-between align-items-center">
+                <div>
+                    <h6 class="mb-2 text-muted">Değerlendirme Ortalama</h6>
+                    <h3 class="fw-bold mb-0">@ViewBag.reviewAverage</h3>
+                </div>
+                <div class="text-warning fs-2">
+                    <i class="fa fa-star"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- En Yüksek Oy Veren -->
+    <div class="col-md-6 col-xl-3">
+        <div class="card shadow-lg rounded-3 border-0">
+            <div class="card-body d-flex justify-content-between align-items-center">
+                <div>
+                    <h6 class="mb-2 text-muted">En Yüksek Oy Veren</h6>
+                    <h3 class="fw-bold mb-0">@ViewBag.maxReviewOwner</h3>
+                </div>
+                <div class="text-danger fs-2">
+                    <i class="fa fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-3 mt-1">
+    <!-- Referans Sayısı -->
+    <div class="col-md-6 col-xl-3">
+        <div class="card shadow-lg rounded-3 border-0">
+            <div class="card-body d-flex justify-content-between align-items-center">
+                <div>
+                    <h6 class="mb-2 text-muted">Referans Sayısı</h6>
+                    <h3 class="fw-bold mb-0">@ViewBag.testimonialCount</h3>
+                </div>
+                <div class="text-primary fs-2">
+                    <i class="fa fa-users"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Okunan Mesaj -->
+    <div class="col-md-6 col-xl-3">
+        <div class="card shadow-lg rounded-3 border-0">
+            <div class="card-body d-flex justify-content-between align-items-center">
+                <div>
+                    <h6 class="mb-2 text-muted">Okunan Mesaj</h6>
+                    <h3 class="fw-bold mb-0">@ViewBag.readMessageCount</h3>
+                </div>
+                <div class="text-success fs-2">
+                    <i class="fa fa-envelope-open"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Kategori Sayısı -->
+    <div class="col-md-6 col-xl-3">
+        <div class="card shadow-lg rounded-3 border-0">
+            <div class="card-body d-flex justify-content-between align-items-center">
+                <div>
+                    <h6 class="mb-2 text-muted">Kategori Sayısı</h6>
+                    <h3 class="fw-bold mb-0">@ViewBag.categoryCount</h3>
+                </div>
+                <div class="text-secondary fs-2">
+                    <i class="fa fa-list"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Sayısı -->
+    <div class="col-md-6 col-xl-3">
+        <div class="card shadow-lg rounded-3 border-0">
+            <div class="card-body d-flex justify-content-between align-items-center">
+                <div>
+                    <h6 class="mb-2 text-muted">Admin Sayısı</h6>
+                    <h3 class="fw-bold mb-0">@ViewBag.userCount</h3>
+                </div>
+                <div class="text-dark fs-2">
+                    <i class="fa fa-user-shield"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

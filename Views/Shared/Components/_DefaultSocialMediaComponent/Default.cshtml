@@ -1,0 +1,9 @@
+﻿@model List<SocialMedia>
+@*
+    default social media
+*@
+
+@foreach(var item in Model)
+{
+    <a href="@item.Link" class="@item.Name"><i class="@item.Icon"></i></a>
+}

@@ -1,0 +1,52 @@
+﻿@model List<SocialMedia>
+@{
+    ViewData["Title"] = "Sosya Medyalar";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+    int count = 0;
+}
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>#</th>
+        <td>Icon</td>
+        <td>İsim</td>
+        <td>Link</td>
+        <td>İşlemler</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <th>@count</th>
+            <td> @item.Icon </td>
+            <td>@item.Name</td>
+            <td>@item.Link</td>
+            <td>
+                <button onclick="deleteSocialMedia(@item.SocialMediaId)" class="btn btn-outline-danger">Sil</button>
+                <a href="/SocialMedia/UpdateSocialMedia/@item.SocialMediaId" class="btn btn-outline-info">Güncelle</a>
+            </td>
+        </tr>
+    }
+</table>
+<a href="/SocialMedia/CreateSocialMedia/" class="btn btn-outline-primary">Yeni Sosyal Medya Ekle</a>
+
+
+<script>
+                function deleteSocialMedia(id){
+
+                        Swal.fire({
+      title: "Silmek İstediğinize Emin Misiniz?",
+      text: "Bu İşlemi Geri Alamazsınız!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Evet Sil!",
+      cancelButtonText: "İptal!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+       window.location.href = "/SocialMedia/DeleteSocialMedia/" + id;
+      }
+    });
+                }
+</script>
